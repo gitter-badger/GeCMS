@@ -1,9 +1,10 @@
-<h1 align="center">
-	<img src="docs/images/GeCMS_Hollow.svg" height="80">
-	<br>
-	<br>
-</h1>
+![](docs/images/GeCMS_Hollow.svg)
 
-#General Content Management System
+GeCMS - General Content Management System
+=========================
+[![Build Status](https://travis-ci.org/NeilRen/GeCMS.svg?branch=master)](https://travis-ci.org/NeilRen/GeCMS)
+[![Yii2](https://img.shields.io/badge/Powered_by-GeCMS-green.svg?style=flat)](http://www.gecms.org/)
 
-in development....
+Brief introduction....
+
+[Home Page](https://www.gecms.org) | [官方主页](https://www.gecms.org) 
