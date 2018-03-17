@@ -1,3 +1,17 @@
 language: java
 jdk: oraclejdk8
-install: cd src && mvn install -DskipTests=true -Dmaven.javadoc.skip=true
+
+install:
+    cd src && mvn install -DskipTests=true -Dmaven.javadoc.skip=true
+
+after_success:
+    - mvn clean test
+    ## 生成测试报告
+    - mvn jacoco:report
+    ## 获取travis解密的token ,并调用coveralls-plugin上传报告
+    - mvn coveralls:report -DrepoToken="${COVERALLS_TOKEN}"
+
+## 加密后的token字串
+env:
+    global:
+        secure: "SU2dv9i9BjuueGT5lwa26AhlQ0kwbSLTsTX5VtSW8IU4zwhcJI/Cr7mT2MrQtnc/7SWs+cwAC2sf/BJA4IssZAX96iQL+ICXRCZV4kmrSq/D1UMEw0lPpbj0oxITJ0/xXJPYB5eofjKCYBJQAo//Xo7O7UGPzA0bu0b50JPPQAD7PW0/A60R6fOxIhEHKL1fm0myryEtr4tpROJ5Wd3c5cpHq3AVhQSRG1xoQNdxT1dM81ctXEPGdmhnbypnw9+FVCD6UuvSAqvHZMDsZYNe3kVJ6guRoUHQOntH8gPdw4mco5xN0J4egk3QetN8dJ9N9bXkXCqdlXNej/l58Gq7yOW/d3WXhiztxRUagf5LhUe0cLOci/ZHT12iq45mxIvX2DCYoHfZwuiNxFTI8zdgQSt3RDQblKzunj0WfqLTILPPv2H16fUp6jAVEnGfbXqh4vjRxZTwQWKR0NsO3nf7ctreGNcb/+kPv4YxuoDHOiGFAVWPRpVzquEb1uw+9U/3ThqtDoHp+PXhmXxWtmqCRhM9GX3IEQ6utmcDGmfBJPXGowl6o5X+cIdMKgIZvUWPpkxCy9zbYDeBCgwHVgZg+PU3+IxYtIW5gSj7ITaYo1DQ+rHrxscFXMiGwXaQ7hJbGxSvqUqz78kO2jr2tNklnh8KZLoHTekROR9pP0aTA8w="
