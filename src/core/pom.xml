@@ -6,8 +6,16 @@
 
     <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
 
     <name>gecms.core</name>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>GeCMS</artifactId>
@@ -16,6 +24,18 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-
+    <build>
+        <plugins>
+            <!-- 直接引用parent中配置好的plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
